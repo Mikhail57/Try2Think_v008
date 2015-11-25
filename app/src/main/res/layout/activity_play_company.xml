@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    android:background="@drawable/back15"
+    tools:context="com.example.mikhail.game2.Section1">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewback"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/new_lvl_back"
+        android:layout_below="@+id/imageView2"
+        android:layout_above="@+id/view"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="18dp"
+        android:layout_marginTop="22dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/new_lvl1v3"
+        android:layout_below="@+id/imageView2"
+        android:layout_above="@+id/view"
+        android:layout_margin="20dp"
+        android:layout_marginTop="0dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:id="@+id/imageView22"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="#2a61ab" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:id="@+id/imageView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="#3c8bf5" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:id="@+id/view"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:src="@color/colorPrimary" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:id="@+id/view2"
+        android:layout_alignBottom="@+id/view"
+        android:layout_alignLeft="@+id/view"
+        android:layout_alignStart="@+id/view"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#ffffff"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="5dp" />
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/b_menu"
+        android:background="@drawable/back_states"
+        android:onClick="onClick"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFFFF" />
+
+    <EditText
+        android:layout_width="110dp"
+        android:layout_height="31dp"
+        android:inputType="textPersonName"
+        android:id="@+id/vvod"
+
+        android:layout_alignTop="@+id/view2"
+        android:layout_alignRight="@+id/view2"
+        android:layout_alignEnd="@+id/view2"
+        android:layout_alignLeft="@+id/view2"
+        android:layout_alignStart="@+id/view2"
+        android:textColor="@color/colorPrimary"
+        android:background="#ffffff"
+        android:backgroundTint="#ffffff"
+        android:layout_margin="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:hint="Введите ваш ответ..."
+        android:textColorHint="#853c8bf5" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/b_help"
+        android:background="@drawable/help_states"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="onClick"
+        android:textColor="#ffffff" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_next_states"
+        android:id="@+id/b_next"
+        android:onClick="onClick"
+        android:layout_alignTop="@+id/view2"
+        android:layout_alignRight="@+id/view2"
+        android:layout_alignEnd="@+id/view2" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:paddingTop="15dp"
+        android:id="@+id/relativeLayout"
+        android:layout_toRightOf="@+id/b_menu"
+        android:layout_toLeftOf="@+id/b_help">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/ico_levels"
+            android:src="@drawable/new_lvl_iconv2"
+            android:layout_alignBottom="@+id/levels"
+            android:layout_toRightOf="@+id/levels"
+            android:layout_toEndOf="@+id/levels"
+            android:layout_marginLeft="2dp" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/ico_coins"
+            android:src="@drawable/new_coins_iconv2"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/coins"
+            android:textSize="20dp"
+            android:textColor="#FFFFFFFF"
+            android:layout_toLeftOf="@+id/ico_coins"
+            android:layout_toStartOf="@+id/ico_coins"
+            android:layout_marginRight="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_alignTop="@+id/ico_coins"
+            android:layout_alignBottom="@+id/ico_coins" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/levels"
+            android:textSize="20dp"
+            android:textColor="#FFFFFFFF"
+            android:layout_toRightOf="@+id/ico_coins"
+            android:layout_toEndOf="@+id/ico_coins"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_alignTop="@+id/ico_coins"
+            android:layout_alignBottom="@+id/ico_coins"
+            android:layout_marginRight="2dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

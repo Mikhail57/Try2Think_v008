@@ -115,8 +115,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.magazine:
                 Toast.makeText(this, "Раздел находится в разработке", Toast.LENGTH_SHORT).show();
-                //Intent goMagazine = new Intent(MainActivity.this, custom_advertisment.class);
-                //startActivity(goMagazine);
                 break;
         }
     }

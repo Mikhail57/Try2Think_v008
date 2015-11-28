@@ -103,9 +103,9 @@ public class Section1 extends AppCompatActivity {
     }
 
     public void win(){
-        if (((DataBase.section1[i]).ch)==1){MainActivity.levels_ch1 +=1;}
-        if (((DataBase.section1[i]).ch)==2){MainActivity.levels_ch2 +=1;}
-        if (((DataBase.section1[i]).ch)==3){MainActivity.levels_ch3 +=1;}
+        if (((DataBase.section1[i]).chapter)==1){MainActivity.levels_ch1 +=1;}
+        if (((DataBase.section1[i]).chapter)==2){MainActivity.levels_ch2 +=1;}
+        if (((DataBase.section1[i]).chapter)==3){MainActivity.levels_ch3 +=1;}
         if (tryC==0){
             MainActivity.coins += 50;
             Toast.makeText(this, "Правильно! +50 монет!", Toast.LENGTH_SHORT).show();}

@@ -3,6 +3,7 @@ package com.example.mikhail.game2;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     public static int coins=25;
     private TextView view_levels;
     private TextView view_coins;
+
+    DatabaseHelper mStateDatabase;
 
     public static final String Podymai_Settings = "podymai";
     public static final String Podymai_Settings_coins = "coins";
@@ -72,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mStateDatabase = new DatabaseHelper(this);
+        SQLiteDatabase sdb;
+        sdb = mStateDatabase.getReadableDatabase();
 
         view_levels = (TextView)findViewById(R.id.levels);
         view_coins = (TextView)findViewById(R.id.coins);

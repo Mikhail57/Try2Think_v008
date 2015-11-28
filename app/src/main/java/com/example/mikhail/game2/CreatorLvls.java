@@ -105,20 +105,20 @@ public class CreatorLvls extends AppCompatActivity {
     }
 
     public void win(){
-        if (((DataBase.section1[i]).ch)==1){MainActivity.levels_ch1 +=1;}
-        if (((DataBase.section1[i]).ch)==2){MainActivity.levels_ch2 +=1;}
-        if (((DataBase.section1[i]).ch)==3){MainActivity.levels_ch3 +=1;}
-        if (DataBase.section1[i].tryc==0){
+        if (((DataBase.section1[i]).chapter)==1){MainActivity.levels_ch1 +=1;}
+        if (((DataBase.section1[i]).chapter)==2){MainActivity.levels_ch2 +=1;}
+        if (((DataBase.section1[i]).chapter)==3){MainActivity.levels_ch3 +=1;}
+        if (DataBase.section1[i].tryCount ==0){
             MainActivity.coins += 50;
             Toast.makeText(this, "Правильно! +50 монет!", Toast.LENGTH_SHORT).show();}
-        if (DataBase.section1[i].tryc==1){
+        if (DataBase.section1[i].tryCount ==1){
             MainActivity.coins += 25;
             Toast.makeText(this, "Правильно! +25 монет!", Toast.LENGTH_SHORT).show();}
-        if (DataBase.section1[i].tryc>1){
+        if (DataBase.section1[i].tryCount >1){
             MainActivity.coins += 10;
             Toast.makeText(this, "Правильно! +10 монет!", Toast.LENGTH_SHORT).show();}
         DataBase.section1[i].status=1;
-        DataBase.section1[i].tryc=0;
+        DataBase.section1[i].tryCount =0;
         help=0;
         //DataBase.templvl[i].status=1;
         MainActivity.savesettings();
@@ -144,7 +144,7 @@ public class CreatorLvls extends AppCompatActivity {
                 }else if (vvod.getText().length() == 0) {
                     Toast.makeText(this, "Введи ответ!", Toast.LENGTH_SHORT).show();
                 } else {
-                    DataBase.section1[i].tryc+=1;
+                    DataBase.section1[i].tryCount +=1;
                     Toast.makeText(this, "Неправильно! Подумай еще!", Toast.LENGTH_SHORT).show();
                 }
 
@@ -161,11 +161,11 @@ public class CreatorLvls extends AppCompatActivity {
                 if (help > 3){Toast.makeText(this, (DataBase.section1[i]).answer, Toast.LENGTH_SHORT).show();}
                 else if (help == 3){
                     if (MainActivity.coins - 100 <0){Toast.makeText(this, "Недостаточно монет!", Toast.LENGTH_SHORT).show();
-                    } else {MainActivity.coins -= 100; Toast.makeText(this, (DataBase.section1[i]).answer, Toast.LENGTH_SHORT).show(); help+=1; DataBase.section1[i].tryc+=1;view_coins.setText(Integer.toString(MainActivity.coins));}}
+                    } else {MainActivity.coins -= 100; Toast.makeText(this, (DataBase.section1[i]).answer, Toast.LENGTH_SHORT).show(); help+=1; DataBase.section1[i].tryCount +=1;view_coins.setText(Integer.toString(MainActivity.coins));}}
                 else if (help == 2){Toast.makeText(this, "Ответ на загадку стоит 100 монет! Нажми еще раз, чтобы купить", Toast.LENGTH_SHORT).show(); help+=1;}
                 else if (help == 1){
                     if (MainActivity.coins - 10 <0){ Toast.makeText(this, "Недостаточно монет!", Toast.LENGTH_SHORT).show();
-                    } else { MainActivity.coins -= 10; Toast.makeText(this, (DataBase.section1[i]).help, Toast.LENGTH_SHORT).show(); help+=1; DataBase.section1[i].tryc+=1;view_coins.setText(Integer.toString(MainActivity.coins));}}
+                    } else { MainActivity.coins -= 10; Toast.makeText(this, (DataBase.section1[i]).help, Toast.LENGTH_SHORT).show(); help+=1; DataBase.section1[i].tryCount +=1;view_coins.setText(Integer.toString(MainActivity.coins));}}
                 else if (help == 0){Toast.makeText(this, "1ая подсказка стоит 10монет! Нажми еще раз, чтобы купить", Toast.LENGTH_SHORT).show(); help+=1;}
                 MainActivity.savesettings();onPause();
                 break;

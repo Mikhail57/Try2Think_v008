@@ -21,7 +21,6 @@
         <activity android:name=".SelectSection" />
         <activity android:name=".CreatorLvls"
             android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".custom_advertisment" />
         <activity
             android:name=".Section1"
             android:noHistory="true"

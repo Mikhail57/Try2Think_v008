@@ -14,17 +14,17 @@ public class DatabaseHelper extends SQLiteOpenHelper implements BaseColumns {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_TABLE = "game";
 
-    private static final String LEVEL_COLUMN = "level";
-    private static final String CHAPTER_COLMUN = "chapter";
-    private static final String TRY_COUNT_COLMUN = "try_count";
-    private static final String STATUS_COLMUN = "status";
+    public static final String LEVEL_COLUMN = "level";
+    public static final String CHAPTER_COLUMN = "chapter";
+    public static final String TRY_COUNT_COLUMN = "try_count";
+    public static final String STATUS_COLUMN = "status";
 
     private static final String DATABASE_CREATE_SCRIPT = "create table "
                         + DATABASE_TABLE + " (" + BaseColumns._ID
-                        + " integer primary key autoincrement, " + CHAPTER_COLMUN
+                        + " integer primary key autoincrement, " + CHAPTER_COLUMN
                         + " integer, " + LEVEL_COLUMN + " integer, "
-                        + STATUS_COLMUN + " integer, "
-                        + TRY_COUNT_COLMUN + " integer);";
+                        + STATUS_COLUMN + " integer, "
+                        + TRY_COUNT_COLUMN + " integer);";
 
     public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);

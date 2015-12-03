@@ -1,5 +1,6 @@
 package com.example.mikhail.game2;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView view_coins;
 
     DatabaseHelper mStateDatabase;
+    SQLiteDatabase sdb;
 
     public static final String Podymai_Settings = "podymai";
     public static final String Podymai_Settings_coins = "coins";
@@ -37,17 +39,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        savesettings();
+        saveSettings();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        loadsettings();
+        loadSettings();
         view_coins.setText(Integer.toString(coins));
         view_levels.setText(Integer.toString(levels_summ));
     }
-    public static void savesettings() {
+    public static void saveSettings() {
         SharedPreferences.Editor editor = P_Main_settings.edit();
         editor.putInt(Podymai_Settings_coins, coins);
         editor.putInt(Podymai_Settings_levels_ch1, levels_ch1);
@@ -56,7 +58,25 @@ public class MainActivity extends AppCompatActivity {
         //editor.putInt(Podymai_Settings_lvlsdb, (DataBase.templvl[PlayCompany.i].status));
         editor.apply();
     }
-    public static void loadsettings() {
+
+
+    public static void saveStateToDatabase() {
+        for (int i=0; i<DataBase.section1.length; i++) {
+            ContentValues newValues = new ContentValues();
+            newValues.put(DatabaseHelper.CHAPTER_COLUMN, 1);
+            newValues.put(DatabaseHelper.LEVEL_COLUMN, i);
+            newValues.put(DatabaseHelper.STATUS_COLUMN, DataBase.section1[i].status);
+            newValues.put(DatabaseHelper.TRY_COUNT_COLUMN, DataBase.section1[i].tryCount);
+        }
+        for (int i=0; i<DataBase.section2.length; i++) {
+            ContentValues newValues = new ContentValues();
+            newValues.put(DatabaseHelper.CHAPTER_COLUMN, 2);
+            newValues.put(DatabaseHelper.LEVEL_COLUMN, i);
+            newValues.put(DatabaseHelper.STATUS_COLUMN, DataBase.section2[i].status);
+            newValues.put(DatabaseHelper.TRY_COUNT_COLUMN, DataBase.section2[i].tryCount);
+        }
+    }
+    public static void loadSettings() {
         if (P_Main_settings.contains(Podymai_Settings_coins) ||
                 P_Main_settings.contains(Podymai_Settings_levels_ch1) ||
                 P_Main_settings.contains(Podymai_Settings_levels_ch2) ||
@@ -77,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mStateDatabase = new DatabaseHelper(this);
-        SQLiteDatabase sdb;
         sdb = mStateDatabase.getReadableDatabase();
 
         view_levels = (TextView)findViewById(R.id.levels);

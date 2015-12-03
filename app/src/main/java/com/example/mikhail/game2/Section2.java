@@ -56,7 +56,7 @@ public class Section2 extends AppCompatActivity {
         view_coins.setText(Integer.toString(MainActivity.coins));
         view_levels.setText(Integer.toString(MainActivity.levels_summ));
 
-        b_back = (Button)findViewById(R.id.b_back);
+        b_back = (Button)findViewById(R.id.b_menu);
         vvod = (EditText)findViewById(R.id.vvod);
         b_next = (Button)findViewById(R.id.b_next);
 
@@ -120,8 +120,8 @@ public class Section2 extends AppCompatActivity {
         tryC=0;
         help=0;
         //DataBase.templvl[i].status=1;
-        MainActivity.savesettings();
-        MainActivity.loadsettings();
+        MainActivity.saveSettings();
+        MainActivity.loadSettings();
         i++;
         view_coins.setText(Integer.toString(MainActivity.coins));
         view_levels.setText(Integer.toString(MainActivity.levels_summ));
@@ -164,7 +164,7 @@ public class Section2 extends AppCompatActivity {
                     if (MainActivity.coins - 10 <0){ Toast.makeText(this, "Недостаточно монет!", Toast.LENGTH_SHORT).show();
                     } else { MainActivity.coins -= 10; Toast.makeText(this, (DataBase.section2[i]).help, Toast.LENGTH_SHORT).show(); help+=1; tryC+=1;view_coins.setText(Integer.toString(MainActivity.coins));}}
                 else if (help == 0){Toast.makeText(this, "1ая подсказка стоит 10монет! Нажми еще раз, чтобы купить", Toast.LENGTH_SHORT).show(); help+=1;}
-                MainActivity.savesettings();onPause();
+                MainActivity.saveSettings();onPause();
                 break;
         }
     }

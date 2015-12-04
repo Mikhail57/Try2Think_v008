@@ -23,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView view_levels;
     private TextView view_coins;
 
-    DatabaseHelper mStateDatabase;
-    SQLiteDatabase sdb;
+    private static MainActivity instance;
 
     public static final String Podymai_Settings = "podymai";
     public static final String Podymai_Settings_coins = "coins";
@@ -33,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String Podymai_Settings_levels_ch2 = "levels_ch2";
     public static final String Podymai_Settings_levels_ch3 = "levels_ch3";
     public static SharedPreferences P_Main_settings;
-
 
 
     @Override
@@ -60,22 +58,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public static void saveStateToDatabase() {
-        for (int i=0; i<DataBase.section1.length; i++) {
-            ContentValues newValues = new ContentValues();
-            newValues.put(DatabaseHelper.CHAPTER_COLUMN, 1);
-            newValues.put(DatabaseHelper.LEVEL_COLUMN, i);
-            newValues.put(DatabaseHelper.STATUS_COLUMN, DataBase.section1[i].status);
-            newValues.put(DatabaseHelper.TRY_COUNT_COLUMN, DataBase.section1[i].tryCount);
-        }
-        for (int i=0; i<DataBase.section2.length; i++) {
-            ContentValues newValues = new ContentValues();
-            newValues.put(DatabaseHelper.CHAPTER_COLUMN, 2);
-            newValues.put(DatabaseHelper.LEVEL_COLUMN, i);
-            newValues.put(DatabaseHelper.STATUS_COLUMN, DataBase.section2[i].status);
-            newValues.put(DatabaseHelper.TRY_COUNT_COLUMN, DataBase.section2[i].tryCount);
-        }
-    }
     public static void loadSettings() {
         if (P_Main_settings.contains(Podymai_Settings_coins) ||
                 P_Main_settings.contains(Podymai_Settings_levels_ch1) ||
@@ -94,10 +76,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        instance = this;
         setContentView(R.layout.activity_main);
-
-        mStateDatabase = new DatabaseHelper(this);
-        sdb = mStateDatabase.getReadableDatabase();
 
         view_levels = (TextView)findViewById(R.id.levels);
         view_coins = (TextView)findViewById(R.id.coins);
@@ -106,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
         levels_summ=levels_ch1+levels_ch2+levels_ch3;
         view_coins.setText(Integer.toString(coins));
         view_levels.setText(Integer.toString(levels_summ));
+
+
+        DatabaseHelper.saveStateToDatabase();
     }
 
     public void onClick(View view) {
@@ -136,5 +119,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Раздел находится в разработке", Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+
+    public static Context getContext(){
+        return instance;
     }
 }
